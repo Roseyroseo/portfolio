@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <h1>Contact</h1>
 </head>
 <body>
+    <h1>Contact</h1>
     <nav>
         <a href="index.html">Home</a>
         <a href="projects/index.html">Projects</a>
         <a href="contact/index.html">Contact</a>
-        <a href="https://github.com/Roseyroseo", target="_blank">GitHub</a>
+        <a href="https://github.com/Roseyroseo" target="_blank">GitHub</a>
     </nav>
     <form action="mailto:foo@example.com" method="POST" enctype="text/plain">
-        <input name="email" type="email">
-        <input name="subject">
-        <textarea name="body"></textarea>
-        <button></button>
+        <label>Email: <input name="email" type="email"></label>
+        <label>Subject: <input name="subject"></label>
+        <label>Message: <textarea name="body"></textarea></label>
+        <button type="submit">Send</button>
     </form>
     
 </body>
