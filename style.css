@@ -13,3 +13,14 @@ body {
     /* Add padding for spacing near the edges*/
     padding: 1em;
   }
+
+.nav {
+    display: flex; /* Make the parent a flex container */
+}
+
+.nav a {
+    flex: 1; /* Ensure all <a> elements take up equal space */
+    text-align: center; /* Center the text inside each link */
+    padding: 1em; /* Add padding for better spacing */
+    text-decoration: none; /* Optional: remove underline for links */
+}
