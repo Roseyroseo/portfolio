@@ -52,44 +52,45 @@ nav a:hover {
   padding-bottom: 0.1em; /* Reduce padding to counter border height */
 }
 
-input, textarea, button {
-  font: inherit; /* Inherit font settings from the parent */
-}
-
 form {
-  display: block; /* The form itself is a block element */
-  max-width: 40ch; /* Set a readable maximum width */
+  display: grid; /* Enable grid layout for the form */
+  grid-template-columns: auto 1fr; /* Define two columns: labels and inputs */
+  gap: 1em; /* Add spacing between rows and columns */
+  max-width: 40ch; /* Limit the width of the form for readability */
   margin: 0 auto; /* Center the form horizontally */
 }
 
 label {
-  display: block; /* Make labels behave like block elements */
-  margin-block: 0.5em; /* Add spacing before and after the label */
-  font-weight: bold; /* Optional: Make the label text bold */
+  display: grid; /* Make labels grid containers themselves */
+  grid-template-columns: subgrid; /* Inherit the grid structure from the form */
+  align-items: center; /* Align text in the middle vertically */
 }
 
-input, textarea {
-  display: block; /* Make inputs behave like block elements */
-  width: 100%; /* Make them occupy the entire form width */
-  padding: 0.5em; /* Add padding for better usability */
+label span {
+  grid-column: 1; /* Place the label text in the first column */
+}
+
+label input, label textarea {
+  grid-column: 2; /* Place the input field in the second column */
+  width: 100%; /* Ensure the input stretches across the available space */
+  padding: 0.5em; /* Add padding for usability */
   border: 1px solid oklch(80% 3% 200); /* Subtle border color */
-  border-radius: 0.25em; /* Add slightly rounded corners */
-  box-sizing: border-box; /* Include padding and border in the width */
-  margin-block: 0.5em; /* Add spacing before and after form controls */
+  border-radius: 0.25em; /* Slightly rounded corners */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
 button {
-  display: block; /* Ensure the button stacks in the layout */
-  margin-top: 1em; /* Add spacing above the button */
-  padding: 0.5em 1em; /* Add padding for usability */
-  border: none; /* Remove default border */
-  background-color: var(--color-accent, oklch(65% 50% 0)); /* Accent background */
-  color: white; /* Make button text white */
+  grid-column: 1 / -1; /* Make the button span across all columns */
+  justify-self: start; /* Align the button to the left */
+  padding: 0.5em 1em; /* Add padding to the button */
+  border: none; /* Remove default button border */
+  background-color: var(--color-accent, oklch(65% 50% 0)); /* Use the accent color */
+  color: white; /* Set button text color */
   border-radius: 0.25em; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor for interactivity */
+  cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 button:hover {
-  background-color: oklch(60% 45% 0); /* Slightly darker hover background */
+  background-color: oklch(60% 45% 0); /* Slightly darker background on hover */
 }
