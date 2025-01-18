@@ -53,10 +53,3 @@ nav a:hover {
   background-color: oklch(95% 5% 0); /* Light background with the same hue */
   padding-bottom: 0.1em; /* Reduce padding to counter border height */
 }
-
-/* Style for the current page link */
-nav a.current {
-  border-bottom: 0.4em solid oklch(85% 3% 200); /* Slightly lighter border for current link */
-  padding-bottom: 0.1em; /* Counter border height */
-  color: inherit; /* Keep the text color consistent */
-}
