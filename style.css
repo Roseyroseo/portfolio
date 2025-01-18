@@ -134,3 +134,27 @@ button:hover {
   line-height: 1.4; /* Improve readability */
   text-align: justify; /* Optional: Justify text for cleaner alignment */
 }
+
+/* General styles for all headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; /* Tighter leading for headings */
+  text-wrap: balance; /* Prevent uneven line breaks */
+  margin: 0.5em 0; /* Add consistent spacing around headings */
+}
+
+/* Specific styles for individual heading levels */
+h1 {
+  font-size: 400%; /* Make <h1> significantly larger for contrast */
+}
+
+h2 {
+  font-size: 200%; /* Distinguish <h2> from <h1> and body text */
+}
+
+h3 {
+  font-size: 150%; /* Slightly smaller than <h2>, for subheadings */
+}
+
+h4, h5, h6 {
+  font-size: 125%; /* Use progressively smaller sizes for lower headings */
+}
