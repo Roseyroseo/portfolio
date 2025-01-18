@@ -14,7 +14,7 @@ body {
     padding: 1em;
   }
 
-.nav {
+nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
@@ -22,7 +22,7 @@ body {
     padding: 0.5em; /* Optional: Add padding for spacing around content */
 }
 
-.nav a {
+nav a {
     flex: 1; /* Ensure all <a> elements take up equal space */
     text-align: center; /* Center the text inside each link */
     padding: 0.5em; /* Add padding for better spacing */
