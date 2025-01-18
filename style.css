@@ -28,8 +28,8 @@ nav {
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
     padding: 0.5em; /* Add padding for spacing around content */
-    margin-bottom: 1em; /* Add spacing below the <nav> */
     border-bottom: 1px solid oklch(80% 3% 200); /* color of bottom border */
+    margin-bottom: 1em; /* Add spacing below the <nav> */
 }
 
 nav a {
@@ -38,14 +38,13 @@ nav a {
     color: inherit; /* make links use the same text color as their parent element*/
     text-align: center; /* Center the text inside each link */
     padding: 0.5em; /* Add padding for better spacing */
-    
+    transition: all 0.3s ease; /* Smooth hover effect */    
 }
 
 /* Style for the current page link */
 nav a.current {
   border-bottom: 0.4em solid oklch(85% 3% 200); /* Thicker bottom border */
   padding-bottom: 0.1em; /* Reduce padding to counter height increase */
-  color: inherit; /* Keep the text color consistent */
 }
 
 /* Style for hovered navigation links */
