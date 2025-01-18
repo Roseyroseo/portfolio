@@ -56,7 +56,7 @@ form {
   display: grid; /* Enable grid layout for the form */
   grid-template-columns: auto 1fr; /* Define two columns: labels and inputs */
   gap: 1em; /* Add spacing between rows and columns */
-  max-width: 40ch; /* Limit the width of the form for readability */
+  max-width: 80ch; /* Limit the width of the form for readability */
   margin: 0 auto; /* Center the form horizontally */
 }
 
