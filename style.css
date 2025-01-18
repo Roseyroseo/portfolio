@@ -54,43 +54,44 @@ nav a:hover {
 
 form {
   display: grid; /* Enable grid layout for the form */
-  grid-template-columns: auto 1fr; /* Define two columns: labels and inputs */
+  grid-template-columns: auto 1fr; /* Two columns: labels and inputs */
   gap: 1em; /* Add spacing between rows and columns */
-  max-width: 80ch; /* Limit the width of the form for readability */
+  max-width: 80ch; /* Limit the form width for readability */
   margin: 0 auto; /* Center the form horizontally */
 }
 
 label {
   display: grid; /* Make labels grid containers themselves */
-  grid-template-columns: subgrid; /* Inherit the grid structure from the form */
-  align-items: center; /* Align text in the middle vertically */
+  grid-template-columns: subgrid; /* Use the parent grid structure (subgrid) */
+  grid-column: 1 / -1; /* Make each label span the full width of the grid */
+  align-items: center; /* Vertically center labels and inputs */
 }
 
 label span {
   grid-column: 1; /* Place the label text in the first column */
 }
 
-label input, label textarea {
+input, textarea {
   grid-column: 2; /* Place the input field in the second column */
-  width: 100%; /* Ensure the input stretches across the available space */
+  width: 100%; /* Make inputs stretch to fit the column */
   padding: 0.5em; /* Add padding for usability */
   border: 1px solid oklch(80% 3% 200); /* Subtle border color */
   border-radius: 0.25em; /* Slightly rounded corners */
-  box-sizing: border-box; /* Include padding and border in width */
+  box-sizing: border-box; /* Include padding and border in the width */
 }
 
 button {
   grid-column: 1 / -1; /* Make the button span across all columns */
-  justify-self: start; /* Align the button to the left */
-  padding: 0.5em 1em; /* Add padding to the button */
-  border: none; /* Remove default button border */
-  background-color: var(--color-accent, oklch(65% 50% 0)); /* Use the accent color */
-  color: white; /* Set button text color */
-  border-radius: 0.25em; /* Rounded corners */
+  justify-self: center; /* Center the button horizontally */
+  padding: 0.5em 1em; /* Add padding for better usability */
+  border: none; /* Remove default border */
+  background-color: var(--color-accent, oklch(65% 50% 0)); /* Use accent color */
+  color: white; /* Make button text white */
+  border-radius: 0.25em; /* Slightly rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 button:hover {
-  background-color: oklch(60% 45% 0); /* Slightly darker background on hover */
+  background-color: oklch(60% 45% 0); /* Slightly darker hover background */
 }
