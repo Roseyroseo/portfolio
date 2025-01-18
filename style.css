@@ -27,7 +27,7 @@ nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
-    margin-bottom: 1em; /* Add spacing below the <nav> */
+    /*margin-bottom: 1em; /* Add spacing below the <nav> */
     border-bottom: 1px solid oklch(80% 3% 200); /* color of bottom border */
 }
 
