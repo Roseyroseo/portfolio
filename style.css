@@ -57,38 +57,39 @@ input, textarea, button {
 }
 
 form {
-  display: grid; /* Use a grid layout for better alignment */
-  gap: 1em; /* Add spacing between form elements */
-  max-width: 40ch; /* Limit form width for better readability */
+  display: block; /* The form itself is a block element */
+  max-width: 40ch; /* Set a readable maximum width */
   margin: 0 auto; /* Center the form horizontally */
 }
 
 label {
-  display: flex; /* Use flexbox for label and input alignment */
-  flex-direction: column; /* Stack label and input vertically */
-  gap: 0.5em; /* Add spacing between label text and input field */
+  display: block; /* Make labels behave like block elements */
+  margin-block: 0.5em; /* Add spacing before and after the label */
+  font-weight: bold; /* Optional: Make the label text bold */
 }
 
 input, textarea {
-  font: inherit; /* Ensure consistent font */
+  display: block; /* Make inputs behave like block elements */
+  width: 100%; /* Make them occupy the entire form width */
   padding: 0.5em; /* Add padding for better usability */
-  border: 1px solid oklch(80% 3% 200); /* Subtle border */
-  border-radius: 0.25em; /* Slightly rounded corners */
-  width: 100%; /* Make input fields stretch to the width of the form */
-  box-sizing: border-box; /* Ensure padding is included in width */
+  border: 1px solid oklch(80% 3% 200); /* Subtle border color */
+  border-radius: 0.25em; /* Add slightly rounded corners */
+  box-sizing: border-box; /* Include padding and border in the width */
+  margin-block: 0.5em; /* Add spacing before and after form controls */
 }
 
 button {
-  font: inherit; /* Use consistent typography */
-  padding: 0.5em 1em; /* Add padding for better usability */
+  display: block; /* Ensure the button stacks in the layout */
+  margin-top: 1em; /* Add spacing above the button */
+  padding: 0.5em 1em; /* Add padding for usability */
   border: none; /* Remove default border */
-  background-color: var(--color-accent, oklch(65% 50% 0)); /* Use accent color */
-  color: white; /* Set button text color */
-  border-radius: 0.25em; /* Slightly rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Add hover effect */
+  background-color: var(--color-accent, oklch(65% 50% 0)); /* Accent background */
+  color: white; /* Make button text white */
+  border-radius: 0.25em; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 button:hover {
-  background-color: oklch(60% 45% 0); /* Darken background on hover */
+  background-color: oklch(60% 45% 0); /* Slightly darker hover background */
 }
