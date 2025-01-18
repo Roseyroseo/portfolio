@@ -14,7 +14,7 @@ body {
     font: 100%/1.5 system-ui;
 
     /* Set a max-width for the body */
-    max-width: 200ch;
+    max-width: 100ch;
 
     /* Center content */
     margin-inline: auto;
