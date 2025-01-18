@@ -95,3 +95,10 @@ button {
 button:hover {
   background-color: oklch(60% 45% 0); /* Slightly darker hover background */
 }
+
+.projects {
+  display: grid; /* Make .projects a grid container */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Flexible column layout */
+  gap: 1.5em; /* Add spacing between grid items */
+  padding: 1em; /* Add padding around the grid for spacing */
+}
