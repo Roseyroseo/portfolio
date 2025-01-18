@@ -110,7 +110,7 @@ button:hover {
   padding: 1em; /* Add padding inside articles */
   border: 1px solid #ddd; /* Subtle border for distinction */
   border-radius: 0.5em; /* Slightly rounded corners */
-  background-color: #f9f9f9; /* Light background for articles */
+  background-color: #e2d2d4; /* Light background for articles */
 }
 
 .projects h2 {
