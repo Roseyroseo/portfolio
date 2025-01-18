@@ -105,8 +105,7 @@ button:hover {
 
 .projects article {
   display: grid; /* Make each <article> a grid container */
-  grid-template-rows: subgrid; /* Use subgrid for consistent row alignment */
-  grid-row: span 3; /* Make each article span 3 rows */
+  grid-template-rows: auto auto 1fr; /* Explicitly define rows: heading, image, content */
   gap: 1em; /* Add spacing between elements within each article */
   padding: 1em; /* Add padding inside articles */
   border: 1px solid #ddd; /* Subtle border for distinction */
@@ -115,12 +114,14 @@ button:hover {
 }
 
 .projects h2 {
+  grid-row: 1; /* Place the heading in the first row */
   margin: 0; /* Remove default margin to avoid excessive spacing */
   font-size: 1.2em; /* Adjust heading size */
   text-align: center; /* Center-align headings */
 }
 
 .projects img {
+  grid-row: 2; /* Place the image in the second row */
   width: 100%; /* Make images responsive */
   max-width: 10em; /* Set a consistent max width for images */
   height: auto; /* Maintain aspect ratio */
@@ -128,6 +129,7 @@ button:hover {
 }
 
 .projects p {
+  grid-row: 3; /* Place the paragraph in the third row */
   font-size: 0.9em; /* Adjust paragraph text size */
   line-height: 1.4; /* Improve readability */
   text-align: justify; /* Optional: Justify text for cleaner alignment */
