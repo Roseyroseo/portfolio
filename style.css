@@ -102,3 +102,33 @@ button:hover {
   gap: 1.5em; /* Add spacing between grid items */
   padding: 1em; /* Add padding around the grid for spacing */
 }
+
+.projects article {
+  display: grid; /* Make each <article> a grid container */
+  grid-template-rows: subgrid; /* Use subgrid for consistent row alignment */
+  grid-row: span 3; /* Make each article span 3 rows */
+  gap: 1em; /* Add spacing between elements within each article */
+  padding: 1em; /* Add padding inside articles */
+  border: 1px solid #ddd; /* Subtle border for distinction */
+  border-radius: 0.5em; /* Slightly rounded corners */
+  background-color: #f9f9f9; /* Light background for articles */
+}
+
+.projects h2 {
+  margin: 0; /* Remove default margin to avoid excessive spacing */
+  font-size: 1.2em; /* Adjust heading size */
+  text-align: center; /* Center-align headings */
+}
+
+.projects img {
+  width: 100%; /* Make images responsive */
+  max-width: 10em; /* Set a consistent max width for images */
+  height: auto; /* Maintain aspect ratio */
+  justify-self: center; /* Center-align images horizontally */
+}
+
+.projects p {
+  font-size: 0.9em; /* Adjust paragraph text size */
+  line-height: 1.4; /* Improve readability */
+  text-align: justify; /* Optional: Justify text for cleaner alignment */
+}
