@@ -40,7 +40,7 @@ body {
 
 /* Theme switcher styling */
 .color-scheme {
-  position: absolute; /* Take it out of the normal document flow */
+  position: fixed; /* Take it out of the normal document flow */
   top: 0.5rem; /* Adjust distance from the top */
   right: 1rem; /* Adjust distance from the right */
   font-size: 80%; /* Slightly smaller font */

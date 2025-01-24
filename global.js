@@ -80,7 +80,10 @@ for (const p of pages) {
   }
   
     // Open external links in a new tab
-    a.toggleAttribute("target", a.host !== location.host);
+    if (a.host !== location.host) {
+        a.setAttribute("target", "_blank"); // Open external links in a new tab
+        a.setAttribute("rel", "noopener noreferrer"); // Security best practice
+      }
   
     // Add the link to the <nav>
     nav.append(a);
