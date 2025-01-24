@@ -20,6 +20,10 @@ document.body.insertAdjacentHTML(
     `
   );
 
+// Create <nav> and add it to the <body>
+const nav = document.createElement('nav');
+document.body.prepend(nav);
+
 // Function to set the color scheme
 function setColorScheme(colorScheme) {
     document.documentElement.style.setProperty("color-scheme", colorScheme);
@@ -56,10 +60,6 @@ const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 // Get the base URL for GitHub Pages 
 const BASE_URL = '/portfolio/';
-
-// Create <nav> and add it to the <body>
-const nav = document.createElement('nav');
-document.body.prepend(nav);
 
 // Generate links for the navigation menu
 for (const p of pages) {

@@ -1,19 +1,19 @@
 :root {
-  --color-accent: oklch(65% 50% 0); /* Store the accent color */
-  --article-bg: var(--article-bg-light); /* Default to light mode background */
-  --article-bg-light: #e2d2d4; /* Light pink for light mode */
-  --article-bg-dark: #3a2b2d; /* Dark pinkish-gray for dark mode */
+  --color-accent: oklch(65% 50% 0);
+  --article-bg: var(--article-bg-light); /* Default to light mode */
+  --article-bg-light: #e2d2d4; /* Light pink */
+  --article-bg-dark: #3a2b2d; /* Dark pinkish-gray */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --article-bg: var(--article-bg-dark); /* Use dark color in dark mode */
+    --article-bg: var(--article-bg-dark); /* Dark mode */
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --article-bg: var(--article-bg-light); /* Use light color in light mode */
+    --article-bg: var(--article-bg-light); /* Light mode */
   }
 }
 
@@ -41,28 +41,24 @@ body {
 
 /* Theme switcher styling */
 .color-scheme {
-  position: fixed; /* Fix it relative to the viewport */
-  top: 1rem; /* Adjust distance from the top */
-  right: 1rem; /* Adjust distance from the right */
-  font-size: 0.9rem; /* Slightly smaller font */
-  font-family: inherit; /* Use the same font as the page */
-  z-index: 1000; /* Ensure it appears above other elements */
-  background-color: var(--article-bg); /* Light background for better visibility */
-  border: 1px solid var(--border-color); /* Match styling with other elements */
-  border-radius: 0.25em; /* Add a slight roundness for aesthetics */
-  padding: 0.5rem; /* Add padding for better usability */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for emphasis */
+  position: fixed; /* Fixed positioning ensures it's relative to the viewport */
+  top: 1rem; /* Distance from the top */
+  right: 1rem; /* Distance from the right */
+  font-size: 0.9rem;
+  font-family: inherit;
+  z-index: 1000; /* Ensure it stays above the navigation */
+  background-color: var(--article-bg-light); /* Default background */
+  border: 1px solid var(--border-color); /* Subtle border */
+  border-radius: 0.25em; /* Rounded corners */
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .color-scheme select {
-  font-size: inherit; /* Ensure the dropdown matches the label */
-  font-family: inherit; /* Use the same font as the rest of the site */
-  padding: 0.3em; /* Add padding for better usability */
-  border: none; /* Remove the default border */
-  outline: none; /* Remove the default outline */
-  background-color: inherit; /* Match the background to the article color */
-  color: inherit; /* Ensure text color adjusts based on the theme */
-  border-radius: 0.25em; /* Rounded corners for the dropdown menu */
+  background-color: inherit; /* Match dropdown background */
+  color: inherit; /* Ensure text color matches theme */
+  border-radius: 0.25em; /* Match rounded corners */
+  border: none; /* Remove default border */
 }
 
 nav {
