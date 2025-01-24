@@ -44,7 +44,6 @@ html {
   border-radius: 0.25em; /* Match rounded corners */
   border: 1px solid #ddd; /* Subtle border for better definition */
   padding: 0.3rem;
-  appearance: none; /* Remove browser-specific styles */
 }
 
 body {
