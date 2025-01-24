@@ -1,6 +1,6 @@
 :root {
   --color-accent: oklch(65% 50% 0);
-  --article-bg: var(--article-bg-light); /* Default to light mode */
+  /*--article-bg: var(--article-bg-light);  Default to light mode */
   --article-bg-light: #e2d2d4; /* Light pink */
   --article-bg-dark: #3a2b2d; /* Dark pinkish-gray */
 }
@@ -32,14 +32,14 @@ html {
   font-size: 0.9rem;
   font-family: inherit;
   background-color: transparent; /* Default background */
-  border: none; /* Subtle border */
+  border: none; 
   border-radius: 0.25em; /* Rounded corners */
   padding: 0.5rem;
 }
 
 .color-scheme select {
   background-color: transparent; /* Match dropdown background */
-  color: inherit; /* Ensure text color matches theme */
+  color: black; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
   border: none;
   padding: 0.3rem;
