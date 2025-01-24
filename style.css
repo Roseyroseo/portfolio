@@ -29,12 +29,12 @@ html {
   top: 0.5rem; /* Distance from the top */
   right: 1rem; /* Distance from the right */
   z-index: 1000; /* Ensure it stays above the navigation */
-  font-size: 0.9rem;
+  font-size: 80%;
   font-family: inherit;
   background-color: transparent; /* Default background */
   border: none; 
   border-radius: 0.25em; /* Rounded corners */
-  padding: 0.2rem;
+  padding: 0.5rem;
   display: inline-block; /* Ensure it takes the proper size */
 }
 
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Specific styles for individual heading levels */
 h1 {
-  font-size: 400%; /* Make <h1> significantly larger for contrast */
+  font-size: 300%; /* Make <h1> significantly larger for contrast */
 }
 
 h2 {
