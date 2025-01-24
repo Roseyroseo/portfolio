@@ -26,7 +26,7 @@ html {
 /* Theme switcher styling */
 .color-scheme {
   position: fixed; /* Fixed positioning ensures it's relative to the viewport */
-  top: 1rem; /* Distance from the top */
+  top: 0.5rem; /* Distance from the top */
   right: 1rem; /* Distance from the right */
   z-index: 1000; /* Ensure it stays above the navigation */
   font-size: 0.9rem;
@@ -35,14 +35,16 @@ html {
   border: none; 
   border-radius: 0.25em; /* Rounded corners */
   padding: 0.5rem;
+  display: inline-block; /* Ensure it takes the proper size */
 }
 
 .color-scheme select {
-  background-color: transparent; /* Match dropdown background */
+  background-color: white; /* Match dropdown background */
   color: black; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
-  border: none;
+  border: 1px solid #ddd; /* Subtle border for better definition */
   padding: 0.3rem;
+  appearance: none; /* Remove browser-specific styles */
 }
 
 body {
