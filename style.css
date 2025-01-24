@@ -47,6 +47,11 @@ body {
   font-family: inherit;
 }
 
+.color-scheme select {
+  font-size: inherit; /* Ensure the dropdown matches the label */
+  font-family: inherit; /* Use the same font as the rest of the site */
+}
+
 nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
