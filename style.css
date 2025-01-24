@@ -34,7 +34,7 @@ html {
   background-color: transparent; /* Default background */
   border: none; 
   border-radius: 0.25em; /* Rounded corners */
-  padding: 0.5rem;
+  padding: 0.2rem;
   display: inline-block; /* Ensure it takes the proper size */
 }
 
