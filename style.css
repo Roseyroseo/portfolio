@@ -5,6 +5,7 @@
 /* Apply the accent color to all elements that use it */
 html {
   accent-color: var(--color-accent);
+  color-scheme: light dark; /* Automatic dark mode */
 }
 
 body {
@@ -23,11 +24,22 @@ body {
     padding: 2em;
   }
 
+/* Theme switcher styling */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+}
+
 nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
     border-bottom: 1px solid oklch(80% 3% 200); /* color of bottom border */
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom-color: var(--border-color);
 }
 
 nav a {
@@ -48,7 +60,7 @@ nav a.current {
 /* Style for hovered navigation links */
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent); /* Accent-colored border */
-  background-color: oklch(95% 5% 0); /* Light background with the same hue */
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%); /* Light background with the same hue */
   padding-bottom: 0.1em; /* Reduce padding to counter border height */
 }
 

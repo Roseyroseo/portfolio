@@ -4,6 +4,43 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
+// Add the theme switcher dropdown
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+      <label class="color-scheme">
+        Theme:
+        <select id="theme-select">
+          <option value="light dark">Automatic</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    `
+  );
+
+// Function to set the color scheme
+function setColorScheme(colorScheme) {
+    document.documentElement.style.setProperty("color-scheme", colorScheme);
+    localStorage.colorScheme = colorScheme; // Save preference
+  }
+
+// Get reference to the select element
+const select = document.getElementById("theme-select");
+
+// Check if there's a saved preference in localStorage
+if ("colorScheme" in localStorage) {
+  const savedScheme = localStorage.colorScheme;
+  setColorScheme(savedScheme); // Apply the saved preference
+  select.value = savedScheme; // Update the dropdown to match
+}
+
+// Add an event listener to the select element
+select.addEventListener("input", (event) => {
+  const selectedScheme = event.target.value;
+  setColorScheme(selectedScheme); // Apply the selected color scheme
+});
+
 // Navigation links data
 const pages = [
     { url: '', title: 'Home' },
