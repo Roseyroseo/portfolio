@@ -23,22 +23,6 @@ html {
   color-scheme: light dark; /* Automatic dark mode */
 }
 
-body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-
-    /* Set a max-width for the body */
-    max-width: 100ch;
-
-    /* Center content */
-    margin-inline: auto;
-
-    /* Add padding for spacing near the edges*/
-    padding: 2em;
-  }
-
 /* Theme switcher styling */
 .color-scheme {
   position: fixed; /* Fixed positioning ensures it's relative to the viewport */
@@ -57,11 +41,27 @@ body {
   background-color: transparent; /* Match dropdown background */
   color: inherit; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
-  border: 1px solid var(--color-accent);
+  border: none;
   padding: 0.3rem;
 }
 
-nav {
+body {
+    /* Set line height to 1.5 times the font size
+         and use the OS’s UI font as the website font
+       */
+    font: 100%/1.5 system-ui;
+
+    /* Set a max-width for the body */
+    max-width: 100ch;
+
+    /* Center content */
+    margin-inline: auto;
+
+    /* Add padding for spacing near the edges*/
+    padding: 2em;
+  }
+
+  nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
