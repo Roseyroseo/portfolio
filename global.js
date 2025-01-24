@@ -16,7 +16,7 @@ document.body.insertAdjacentHTML(
           <option value="dark">Dark</option>
         </select>
       </label>
-      <nav></nav>
+
     `
   );
 

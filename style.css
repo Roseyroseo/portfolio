@@ -60,10 +60,9 @@ body {
   padding: 0.3em; /* Add padding for better usability */
   border: none; /* Remove the default border */
   outline: none; /* Remove the default outline */
-  background-color: var(--article-bg); /* Match the background to the article color */
+  background-color: inherit; /* Match the background to the article color */
   color: inherit; /* Ensure text color adjusts based on the theme */
   border-radius: 0.25em; /* Rounded corners for the dropdown menu */
-  appearance: none; /* Style the dropdown arrow */
 }
 
 nav {
