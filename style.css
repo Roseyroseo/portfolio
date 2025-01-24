@@ -2,7 +2,7 @@
   --color-accent: oklch(65% 50% 0);
   /*--article-bg: var(--article-bg-light);  Default to light mode */
   --article-bg-light: #e2d2d4; /* Light pink */
-  --article-bg-dark: #3a2b2d; /* Dark pinkish-gray */
+  --article-bg-dark: #92797f; /* Dark pinkish-gray */
 }
 
 @media (prefers-color-scheme: dark) {
