@@ -40,16 +40,18 @@ body {
 
 /* Theme switcher styling */
 .color-scheme {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 80%;
-  font-family: inherit;
+  position: absolute; /* Take it out of the normal document flow */
+  top: 0.5rem; /* Adjust distance from the top */
+  right: 1rem; /* Adjust distance from the right */
+  font-size: 80%; /* Slightly smaller font */
+  font-family: inherit; /* Use the same font as the page */
+  z-index: 10; /* Ensure it appears above other elements */
 }
 
 .color-scheme select {
   font-size: inherit; /* Ensure the dropdown matches the label */
   font-family: inherit; /* Use the same font as the rest of the site */
+  padding: 0.2em 0.5em; /* Add padding for better usability */
 }
 
 nav {

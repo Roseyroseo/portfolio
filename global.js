@@ -64,8 +64,10 @@ document.body.prepend(nav);
 for (const p of pages) {
     let url = p.url;
   
-    // Ensure absolute paths for navigation links
-    url = BASE_URL + url;
+    // navigation links
+    if (!url.startsWith("http")) {
+        url = BASE_URL + url;
+      }
   
     // Create a link element
     const a = document.createElement("a");
