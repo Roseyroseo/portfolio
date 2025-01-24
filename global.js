@@ -36,10 +36,9 @@ for (const p of pages) {
     a.textContent = p.title;
   
     // Highlight the current page
-    a.classList.toggle(
-      "current",
-      a.host === location.host && a.pathname === location.pathname
-    );
+  if (a.host === location.host && a.pathname === location.pathname) {
+    a.classList.add("current"); // Add the 'current' class
+  }
   
     // Open external links in a new tab
     a.toggleAttribute("target", a.host !== location.host);
