@@ -19,7 +19,7 @@
 
 /* Apply the accent color to all elements that use it */
 html {
-  accent-color: var(--color-accent);
+  /*accent-color: var(--color-accent); */
   color-scheme: light dark; /* Automatic dark mode */
 }
 
@@ -44,28 +44,28 @@ body {
   position: fixed; /* Fixed positioning ensures it's relative to the viewport */
   top: 1rem; /* Distance from the top */
   right: 1rem; /* Distance from the right */
+  z-index: 1000; /* Ensure it stays above the navigation */
   font-size: 0.9rem;
   font-family: inherit;
-  z-index: 1000; /* Ensure it stays above the navigation */
-  background-color: var(--article-bg-light); /* Default background */
-  border: 1px solid var(--border-color); /* Subtle border */
+  background-color: transparent; /* Default background */
+  border: none; /* Subtle border */
   border-radius: 0.25em; /* Rounded corners */
   padding: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .color-scheme select {
-  background-color: inherit; /* Match dropdown background */
+  background-color: var(--article-bg); /* Match dropdown background */
   color: inherit; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
-  border: none; /* Remove default border */
+  border: 1px solid var(--color-accent);
+  padding: 0.3rem;
 }
 
 nav {
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
-    border-bottom: 1px solid oklch(80% 3% 200); /* color of bottom border */
+    border-bottom: 1px solid var(--color-accent); /* color of bottom border */
     --border-color: oklch(50% 10% 200 / 40%);
     border-bottom-color: var(--border-color);
     z-index: 1;
