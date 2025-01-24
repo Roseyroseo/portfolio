@@ -64,6 +64,7 @@ body {
   }
 
   nav {
+    position: relative;
     display: flex; /* Make the parent a flex container */
     justify-content: space-around; /* Distribute links evenly */
     align-items: center; /* Align items vertically */
