@@ -47,7 +47,7 @@ body {
   font-size: 0.9rem; /* Slightly smaller font */
   font-family: inherit; /* Use the same font as the page */
   z-index: 1000; /* Ensure it appears above other elements */
-  background-color: var(--article-bg-light); /* Light background for better visibility */
+  background-color: var(--article-bg); /* Light background for better visibility */
   border: 1px solid var(--border-color); /* Match styling with other elements */
   border-radius: 0.25em; /* Add a slight roundness for aesthetics */
   padding: 0.5rem; /* Add padding for better usability */
