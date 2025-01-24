@@ -60,7 +60,10 @@ body {
   padding: 0.3em; /* Add padding for better usability */
   border: none; /* Remove the default border */
   outline: none; /* Remove the default outline */
-  background-color: transparent; /* Match background */
+  background-color: var(--article-bg); /* Match the background to the article color */
+  color: inherit; /* Ensure text color adjusts based on the theme */
+  border-radius: 0.25em; /* Rounded corners for the dropdown menu */
+  appearance: none; /* Style the dropdown arrow */
 }
 
 nav {
@@ -70,6 +73,7 @@ nav {
     border-bottom: 1px solid oklch(80% 3% 200); /* color of bottom border */
     --border-color: oklch(50% 10% 200 / 40%);
     border-bottom-color: var(--border-color);
+    z-index: 1;
 }
 
 nav a {
