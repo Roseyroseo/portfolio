@@ -35,7 +35,6 @@ html {
   border: none; 
   border-radius: 0.25em; /* Rounded corners */
   padding: 0.5rem;
-  display: inline-block; /* Ensure it takes the proper size */
 }
 
 .color-scheme select {
