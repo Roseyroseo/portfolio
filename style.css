@@ -54,7 +54,7 @@ body {
 }
 
 .color-scheme select {
-  background-color: var(--article-bg); /* Match dropdown background */
+  background-color: transparent; /* Match dropdown background */
   color: inherit; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
   border: 1px solid var(--color-accent);
