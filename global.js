@@ -20,10 +20,6 @@ document.body.insertAdjacentHTML(
     `
   );
 
-// Create <nav> and add it to the <body>
-const nav = document.createElement('nav');
-document.body.prepend(nav);
-
 // Function to set the color scheme
 function setColorScheme(colorScheme) {
     document.documentElement.style.setProperty("color-scheme", colorScheme);
@@ -54,6 +50,11 @@ const pages = [
     { url: 'resume/', title: 'Resume' },
     { url: 'https://github.com/Roseyroseo', title: 'GitHub' },
   ];
+
+
+// Create <nav> and append it after the dropdown
+const nav = document.createElement('nav');
+document.body.insertBefore(nav, document.body.children[1]);
 
 // Detect if we are on the home page
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
@@ -89,3 +90,33 @@ for (const p of pages) {
     // Add the link to the <nav>
     nav.append(a);
   }
+
+// contact form
+(function handleContactForm() {
+    // Get the reference to the form
+    const form = document.getElementById("contact-form");
+  
+    // Add an event listener to intercept the submit event
+    form?.addEventListener("submit", function (event) {
+      // Prevent the default form submission
+      event.preventDefault();
+  
+      // Create a FormData object from the form
+      const data = new FormData(form);
+  
+      // Start building the mailto URL
+      let url = form.action + "?";
+  
+      // Iterate over the form fields
+      for (let [name, value] of data) {
+        // Append encoded key-value pairs to the URL
+        url += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
+      }
+  
+      // Remove the trailing '&' from the URL
+      url = url.slice(0, -1);
+  
+      // Navigate to the URL (opens email client with prefilled fields)
+      location.href = url;
+    });
+  })();
