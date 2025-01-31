@@ -144,39 +144,6 @@ export async function fetchJSON(url) {
  * @param {string} headingLevel - Optional heading level for the project title (default: 'h2').
  **/
 
-/*
-export function renderProjects(project, containerElement, headingLevel = "h2"){
-  // Validate containerElement
-  if (!(containerElement instanceof HTMLElement)) {
-    console.error("Invalid container element provided.");
-    return;
-  }
-
-  // Validate headingLevel
-  const validHeadingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-  if (!validHeadingTags.includes(headingLevel)) {
-    console.warn(`Invalid heading level "${headingLevel}" provided. Defaulting to "h2".`);
-    headingLevel = 'h2';
-  }
-
-  // Clear existing content in the container to avoid duplication
-  containerElement.innerHTML = '';
-
-  // Create the <article> element
-  const article = document.createElement('article');
-
-  // Populate the <article> with dynamic content
-  article.innerHTML = `
-        <${headingLevel}>${project.title}</${headingLevel}>
-        <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>
-    `;
-
-  // Append the <article> to the container
-  containerElement.appendChild(article);
-}
-*/
-
 export function renderProjects(project, containerElement, headingLevel = "h2") {
   if (!containerElement) {
       console.error("Invalid container element.");

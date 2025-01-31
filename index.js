@@ -15,7 +15,7 @@ async function displayLatestProjects() {
 
         if (!projectsContainer) {
             console.error('Projects container not found.');
-            return;
+            return; // exit if container is not found
         }
 
         // Render the latest projects
