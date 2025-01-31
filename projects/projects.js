@@ -18,16 +18,28 @@ async function displayProjects() {
         return;
     }
 
-    // Update the projects count in the title
-    if (projectsTitle) {
-        projectsTitle.textContent = `Projects (${projects.length})`;
-    }
+    try {
+        console.log("Fetching projects JSON...");
+        const projects = await fetchJSON("../lib/projects.json");
+        console.log("Projects fetched:", projects);
 
-    // Render each project dynamically
-    projects.forEach((project) => {
-        renderProjects(project, projectsContainer, "h2");
-    });
+        if (!projects || !Array.isArray(projects)) {
+            console.warn("Invalid or empty projects data.");
+            projectsContainer.innerHTML = "<p>No projects available.</p>";
+            return;
+        }
+        // Update the projects title with the total number of projects
+        if (projectsTitle) {
+            projectsTitle.textContent = `Projects (${projects.length})`;
+        }
+        // Render each project into the container
+        projects.forEach((project) => {
+            renderProjects(project, projectsContainer, "h2");
+        });
+
+    } catch (error) {
+        console.error("Error fetching or rendering projects:", error);
+    }
 }
 
-// Call the function to display projects
 displayProjects();
