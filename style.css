@@ -224,8 +224,8 @@ h4, h5, h6 {
 #github-avatar {
   display: block;
   margin: 0 auto 1rem; /* Center the image and add spacing below */
-  width: 65px; /* Set the desired size of the avatar */
-  height: 65px; /* Maintain a square shape */
+  width: 70px; /* Set the desired size of the avatar */
+  height: 70px; /* Maintain a square shape */
   border-radius: 50%; /* Make it circular */
   border: 1px solid var(--color-accent); /* Optional: Add a border */
 }
