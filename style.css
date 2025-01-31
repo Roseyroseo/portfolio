@@ -201,3 +201,21 @@ h3 {
 h4, h5, h6 {
   font-size: 125%; /* Use progressively smaller sizes for lower headings */
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal-sized columns */
+  gap: 1rem; /* Spacing between grid items */
+}
+
+#profile-stats dt {
+  font-weight: bold;
+  text-align: center;
+  grid-row: 1; /* Place all <dt> elements in the first row */
+}
+
+#profile-stats dd {
+  text-align: center;
+  grid-row: 2; /* Place all <dd> elements in the second row */
+  margin: 0; /* Remove default margins */
+}

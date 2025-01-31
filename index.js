@@ -1,4 +1,4 @@
-import { fetchJSON, renderProjects } from './global.js';
+import {fetchGitHubData, fetchJSON, renderProjects } from './global.js';
 
 async function displayLatestProjects() {
     try {
@@ -29,3 +29,34 @@ async function displayLatestProjects() {
 
 // Call the function to display the latest projects
 displayLatestProjects();
+
+async function displayGitHubProfile() {
+    try {
+        // Fetch GitHub profile data
+        const githubData = await fetchGitHubData('Roseyroseo');
+        console.log('GitHub Data:', githubData);
+
+        // Select the container element
+        const profileStats = document.querySelector('#profile-stats');
+
+        // Check if the container exists
+        if (profileStats) {
+            // Dynamically update its content using template literals
+            profileStats.innerHTML = `
+                <dl>
+                    <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
+                    <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
+                    <dt>Followers:</dt><dd>${githubData.followers}</dd>
+                    <dt>Following:</dt><dd>${githubData.following}</dd>
+                </dl>
+            `;
+        } else {
+            console.error('Profile stats container not found.');
+        }
+    } catch (error) {
+        console.error('Error fetching GitHub data:', error);
+    }
+}
+
+// Call the function to display GitHub stats
+displayGitHubProfile();
