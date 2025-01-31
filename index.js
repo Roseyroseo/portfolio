@@ -44,10 +44,12 @@ async function displayGitHubProfile() {
             // Dynamically update its content using template literals
             profileStats.innerHTML = `
                 <dl>
-                    <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-                    <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
+                    <img src="${githubData.avatar_url}" alt="Roseyroseo" id="github-avatar">
+                    <dl>
+                    <dt>Username:</dt><dd>${githubData.login}</dd>
                     <dt>Followers:</dt><dd>${githubData.followers}</dd>
                     <dt>Following:</dt><dd>${githubData.following}</dd>
+                    <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
                 </dl>
             `;
         } else {
