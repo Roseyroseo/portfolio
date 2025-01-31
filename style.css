@@ -211,6 +211,7 @@ h4, h5, h6 {
 #profile-stats dt {
   font-weight: bold;
   text-align: center;
+  white-space: nowrap; /* Prevent text from breaking into new lines */
   grid-row: 1; /* Place all <dt> elements in the first row */
 }
 
@@ -223,8 +224,8 @@ h4, h5, h6 {
 #github-avatar {
   display: block;
   margin: 0 auto 1rem; /* Center the image and add spacing below */
-  width: 75px; /* Set the desired size of the avatar */
-  height: 75px; /* Maintain a square shape */
+  width: 65px; /* Set the desired size of the avatar */
+  height: 65px; /* Maintain a square shape */
   border-radius: 50%; /* Make it circular */
   border: 2px solid var(--color-accent); /* Optional: Add a border */
 }
