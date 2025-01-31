@@ -174,32 +174,3 @@ export function renderProjects(project, containerElement){
   // Append the <article> to the container
   containerElement.appendChild(article);
 }
-
-/**
- * Dynamically fetches and renders projects into the container on the Projects page.
- */
-async function displayProjects() {
-  const projectsContainer = document.querySelector('.projects');
-
-  if (!projectsContainer) {
-    console.warn("Projects container not found on the page.");
-    return;
-  }
-
-  const projectsData = await fetchJSON('../lib/projects.json');
-
-  if (!projectsData || !Array.isArray(projectsData)) {
-    console.warn("No projects data fetched or invalid data format.");
-    return;
-  }
-
-  // Render each project dynamically
-  projectsData.forEach((project) => {
-    renderProjects(project, projectsContainer, 'h3');
-  });
-}
-
-// Automatically load projects if on the Projects page
-if (document.body.classList.contains('projects-page')) {
-  displayProjects();
-}
