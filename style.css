@@ -219,3 +219,12 @@ h4, h5, h6 {
   grid-row: 2; /* Place all <dd> elements in the second row */
   margin: 0; /* Remove default margins */
 }
+
+#github-avatar {
+  display: block;
+  margin: 0 auto 1rem; /* Center the image and add spacing below */
+  width: 100px; /* Set the desired size of the avatar */
+  height: 100px; /* Maintain a square shape */
+  border-radius: 50%; /* Make it circular */
+  border: 2px solid var(--color-accent); /* Optional: Add a border */
+}
