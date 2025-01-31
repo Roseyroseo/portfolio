@@ -144,7 +144,7 @@ export async function fetchJSON(url) {
  * @param {string} headingLevel - Optional heading level for the project title (default: 'h2').
  **/
 
-export function renderProjects(project, containerElement){
+export function renderProjects(project, containerElement, headingLevel = "h2"){
   // Validate containerElement
   if (!(containerElement instanceof HTMLElement)) {
     console.error("Invalid container element provided.");
@@ -166,10 +166,10 @@ export function renderProjects(project, containerElement){
 
   // Populate the <article> with dynamic content
   article.innerHTML = `
-    <${headingLevel}>${project.title || 'Untitled Project'}</${headingLevel}>
-    <img src="${project.image || ''}" alt="${project.title || 'Project image'}">
-    <p>${project.description || 'No description available.'}</p>
-  `;
+        <${headingLevel}>${project.title}</${headingLevel}>
+        <img src="${project.image}" alt="${project.title}">
+        <p>${project.description}</p>
+    `;
 
   // Append the <article> to the container
   containerElement.appendChild(article);
