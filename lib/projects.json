@@ -1,8 +1,9 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "Is Less More? Analyzing Ratings by Recipe Complexity",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, soluta? Cum voluptate natus a ad, ipsa nihil aperiam sapiente reiciendis harum obcaecati atque facilis laboriosam maiores eveniet eaque temporibus dolor!"
+        "description": "In our fast-paced world people have come to appreciate convenience and appreciate time savings anywhere possible, so are recipe ratings perhaps biased towards quick-and-easy solutions to feeding ourselves and our families? Or do ratings provide a good measure of simply how enjoyable a meal is despite the painstaking labor some of the tastiest dishes require? This analysis aims to focus on the relationship between the complexity of recipes, how well scored they are, assess how much weight these properties hold in considering the overall rating of a recipe, and how well rated a simple recipe could be rated in comparison to a complex one."
     },
     {
         "title": "Tempora voluptates consequatur alias.",
