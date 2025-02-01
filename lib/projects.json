@@ -2,19 +2,19 @@
     {
         "title": "Is Less More? Analyzing Ratings by Recipe Complexity",
         "year": "2024",
-        "image": "/images/pimg/recipes.png",
+        "image": "/portfolio/images/pimg/recipes.png",
         "description": "In our fast-paced world people have come to appreciate convenience and appreciate time savings anywhere possible, so are recipe ratings perhaps biased towards quick-and-easy solutions to feeding ourselves and our families? We analyze a dataset of over 400,000 recipes to find out."
     },
     {
         "title": "The Current State of Data Science: Compensation and Representation",
         "year":"2024",
-        "image": "/images/pimg/DSToday.png",
+        "image": "/portfolio/images/pimg/DSToday.png",
         "description": "As Data Science & Machine Learning evolves as one of the most dynamic and impactful domains in technology, we want to analyze trends and patterns using the 2020 Kaggle DS & ML Survey, which gathered responses from over 20,000 participants across 171 countries and territories."
     },
     {
         "title": "Computer Architecture Antics: Building a Raspberry Pi Mini Arcade.",
         "year":"2022",
-        "image": "/images/pimg/picade.png",
+        "image": "/portfolio/images/pimg/picade.png",
         "description": "Taking Computer Architecture just to build a personal arcade and have a legitimate excuse to allocate time for videogames. 😌 🌸"
     },
     {
