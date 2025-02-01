@@ -22,9 +22,15 @@ document.body.insertAdjacentHTML(
 
 // Function to set the color scheme
 function setColorScheme(colorScheme) {
-    document.documentElement.style.setProperty("color-scheme", colorScheme);
-    localStorage.colorScheme = colorScheme; // Save preference
-  }
+  document.documentElement.style.setProperty("color-scheme", colorScheme);
+  localStorage.colorScheme = colorScheme; // Save preference
+
+  // Dynamically update the --article-bg variable
+  const isDarkMode = colorScheme === "dark" || 
+                     (colorScheme === "light dark" && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const articleBg = isDarkMode ? "var(--article-bg-dark)" : "var(--article-bg-light)";
+  document.documentElement.style.setProperty("--article-bg", articleBg);
+}
 
 // Get reference to the select element
 const select = document.getElementById("theme-select");

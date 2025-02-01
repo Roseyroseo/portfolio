@@ -2,7 +2,7 @@
   --color-accent: oklch(65% 50% 0);
   /*--article-bg: var(--article-bg-light);  Default to light mode */
   --article-bg-light: #e2d2d4; /* Light pink */
-  --article-bg-dark: #92797f; /* Dark pinkish-gray */
+  --article-bg-dark: #5e303a; /* Dark pinkish-gray */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,7 +34,6 @@ html {
   background-color: transparent; /* Default background */
   border: none; 
   border-radius: 0.25em; /* Rounded corners */
-  padding: 0.5rem;
   display: inline-block; /* Ensure it takes the proper size */
 }
 
@@ -42,8 +41,7 @@ html {
   background-color: white; /* Match dropdown background */
   color: black; /* Ensure text color matches theme */
   border-radius: 0.25em; /* Match rounded corners */
-  border: 1px solid #ddd; /* Subtle border for better definition */
-  padding: 0.3rem;
+  border: 0.8px solid #ccc; /* Subtle border for better definition */
 }
 
 body {
