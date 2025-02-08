@@ -7,7 +7,7 @@ async function displayLatestProjects() {
         console.log('Projects fetched:', projects);
 
         // Filter the latest 3 projects
-        const latestProjects = projects.slice(0, 3);
+        const latestProjects = projects.slice(0, 4);
         console.log('Latest projects:', latestProjects);
 
         // Select the projects container

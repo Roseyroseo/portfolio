@@ -51,7 +51,7 @@ body {
     font: 100%/1.5 system-ui;
 
     /* Set a max-width for the body */
-    max-width: 100ch;
+    max-width: 140ch;
 
     /* Center content */
     margin-inline: auto;
@@ -183,8 +183,61 @@ article p {
 .project-year {
   display: block; /* Force it to take up its own line */
   margin-top: 0.5em; /* Add space above the year */
-  font-style: italic; /* Optional: Make it stand out with italics */
-  color: #666; /* Optional: Add a muted text color */
+  font-style: italic; /* Italicize the year */
+  color: #666; /* muted text color */
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+/* Legend styling */
+.legend li {
+  display: flex;
+  align-items: center; /* Center-align text and swatch */
+  gap: 0.5rem; /* Space between swatch and text */
+}
+
+.legend .swatch {
+  width: 1em; /* Make it a square */
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color); /* Use custom property for color */
+  border-radius: 0.25em; /* Slightly rounded corners */
+}
+
+.container {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Center items horizontally (if needed) */
+  gap: 2rem; /* Space between the pie chart and the legend */
+  margin-top: 1rem; /* Space above the container */
+}
+
+.chart-container {
+  display: flex; /* Ensures proper layout inside this container */
+  flex-direction: column; /* Stacks SVG and legend */
+  gap: 1rem; /* Adds space between pie chart and legend */
+}
+
+svg {
+  flex: 0 0 auto; /* Prevent SVG from stretching */
+  max-width: 15em; /* Limit size of pie chart */
+  aspect-ratio: 1 / 1; /* Ensure it stays a circle */
+}
+
+.legend {
+  flex-grow: 1; /* Ensure it takes up remaining space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Auto-adjust columns */
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  border-radius: 0.5rem;
 }
 
 /* General styles for all headings */
