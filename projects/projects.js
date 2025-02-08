@@ -57,7 +57,7 @@ function renderProjects(projectsToRender) {
       <h2>${project.title}</h2>
       <img src="${project.image}" alt="${project.title}" />
       <p>${project.description}</p>
-      <footer><time>c. ${project.year}</time></footer>
+      <footer><time class="project-year">c. ${project.year}</time></footer>
     `;
     projectsContainer.appendChild(article);
   });
