@@ -23,12 +23,18 @@ async function fetchAndDisplayProjects() {
 
     // Attach event listener to the search bar
     if (searchInput) {
-      searchInput.addEventListener("input", (event) => {
-        query = event.target.value.toLowerCase();
-        const filteredProjects = filterProjects(projects, query);
-        renderProjects(filteredProjects);
-        renderPieChart(filteredProjects); // Update pie chart for filtered projects
-      });
+        searchInput.addEventListener("input", (event) => {
+            query = event.target.value; // Update the search query
+    
+            // Get the currently selected year
+            const selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
+    
+            // Apply both filters at once
+            const filteredProjects = filterProjects(query, selectedYear);
+    
+            // Render the updated projects
+            renderProjects(filteredProjects);
+        });
     }
 
     // Render the initial pie chart
@@ -38,13 +44,15 @@ async function fetchAndDisplayProjects() {
   }
 }
 
-function filterProjects(projects, query) {
-  return projects.filter((project) => {
-    const values = Object.values(project)
-      .join(" ")
-      .toLowerCase();
-    return values.includes(query);
-  });
+function filterProjects(query, selectedYear) {
+    return projects.filter((project) => {
+        const values = Object.values(project)
+            .join(" ")
+            .toLowerCase();
+        const matchesQuery = values.includes(query.toLowerCase());
+        const matchesYear = selectedYear ? project.year === selectedYear : true;
+        return matchesQuery && matchesYear;
+    });
 }
 
 function renderProjects(projectsToRender) {
@@ -102,29 +110,24 @@ function renderPieChart(projectsToVisualize) {
       .attr("stroke", "#fff")
       .attr("stroke-width", 0.3)
       .on("click", () => {
-        // Toggle selection
         selectedIndex = selectedIndex === i ? -1 : i;
-
-        // Update wedges and legend classes
+    
+        // Update classes for visual selection
         svg
           .selectAll("path")
           .attr("class", (_, idx) => (idx === selectedIndex ? "selected" : null));
-
+    
         legend
           .selectAll("li")
           .attr("class", (_, idx) => (idx === selectedIndex ? "selected" : null));
-
-        // Filter projects by selected year
-        if (selectedIndex === -1) {
-          renderProjects(projects); // Render all projects
-        } else {
-          const selectedYear = data[selectedIndex].label;
-          const filteredProjects = projects.filter(
-            (p) => p.year === selectedYear
-          );
-          renderProjects(filteredProjects); // Render filtered projects
-        }
-      });
+    
+        // Get the selected year
+        const selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
+    
+        // Apply both search and year filtering
+        const filteredProjects = filterProjects(query, selectedYear);
+        renderProjects(filteredProjects);
+    });
   });
 
   // Draw legend with interactivity

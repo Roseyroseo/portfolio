@@ -184,7 +184,7 @@ article p {
   display: block; /* Force it to take up its own line */
   margin-top: 0.5em; /* Add space above the year */
   font-style: italic; /* Italicize the year */
-  color: #666; /* muted text color */
+  color: #8d8d8d; /* muted text color */
 }
 
 #projects-pie-plot {
