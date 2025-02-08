@@ -2,13 +2,13 @@
     {
         "title": "Misleading Visualizations",
         "year":"2025",
-        "image": "portfolio/images/pimg/mislead.png",
+        "image": "/portfolio/images/pimg/mislead.png",
         "description": "Trying to create a misleading visualization on purpose in order to make better honest visualizations."
     },
     {
         "title": "Weather Patterns in US Cities",
         "year":"2025",
-        "image": "portfolio/images/pimg/weather.png",
+        "image": "/portfolio/images/pimg/weather.png",
         "description": "San Francisco shows a unique relationship between rain and sunshine not found in other cities."
     },
     {
@@ -26,31 +26,31 @@
     {
         "title": "Effects of Smoking on Gestation Development",
         "year":"2024",
-        "image": "portfolio/images/pimg/smoke.png",
+        "image": "/portfolio/images/pimg/smoke.png",
         "description": "We studied a dataset of 1236 babies to observe the difference in weight between babies born to mothers who smoked during their pregnancy and those who did not"
     },
     {
         "title": "Student Attitude and Behaviors Regarding Videogames during School in 1994",
         "year":"2024",
-        "image": "portfolio/images/pimg/vgames.png",
+        "image": "/portfolio/images/pimg/vgames.png",
         "description": "Using a 1994 survey conducted at UC Berkeley for students enrolled in statistics courses, we observed attitudes towards videogames, and academic outcomes."
     },
     {
         "title": "Analyzing High-Density Palindrome Clusters in DNA Sequences",
         "year":"2024",
-        "image": "portfolio/images/pimg/dna.png",
+        "image": "/portfolio/images/pimg/dna.png",
         "description": "We aim to assess how the distribution of palindromes deviates from a uniform scatter across the DNA sequence and study if the clusters are due to chance."
     },
     {
         "title": "Linear Model Accuracy on Non-Linear Data",
         "year":"2024",
-        "image": "portfolio/images/pimg/line.png",
+        "image": "/portfolio/images/pimg/line.png",
         "description": "Using data from a gamma transmission snow gauge in the Sierra Nevada mountains, we assess how linear models perform in this data exhibiting an exponential decay pattern."
     },
     {
         "title": "Adopt a Classroom: Encouraging STEM Education in Underprivileged Schools",
         "year":"2023",
-        "image": "portfolio/images/pimg/cscg.png",
+        "image": "/portfolio/images/pimg/cscg.png",
         "description": "In Collaboration with the Puente program, we created activities and workshops to encourage STEM education in underprivileged schools. Provided fun STEM kits to students as prizes."
     },
     {
@@ -62,19 +62,19 @@
     {
         "title": "The Coded Gaze: Raising Awareness about Algorithmic Bias",
         "year":"2021",
-        "image": "portfolio/images/pimg/coded.png",
+        "image": "/portfolio/images/pimg/coded.png",
         "description": "In Collaboration with the Umoja Community, we raise awareness to the bias embedded in algorithms and the impact it has on marginalized communities. This project aims to increase representation in tech and data science."
     },
     {
         "title": "Observing Broad Line Features Within Active Galactic Nuclei",
         "year":"2021",
-        "image": "portfolio/images/pimg/lamat.png",
+        "image": "/portfolio/images/pimg/lamat.png",
         "description": "Using a catalog from the Sloan Digital Sky Survey, we compared 2,000 galaxies with Broad Line AGN features to a large-scale sample galaxy catalog with over 500k galaxies in order to infer characteristics unique to galaxies with Broad Line features. This project was a part of my 2021 Lamat fellowship at UCSC."
     },
     {
         "title": "EChALE STEM Loteria Dealer",
         "year":"2020",
-        "image": "portfolio/images/pimg/echale.png",
+        "image": "/portfolio/images/pimg/echale.png",
         "description": "A card dealer application for the EChALE STEM Loteria game, used during cultural fundraiser nights."
     }
 ]
