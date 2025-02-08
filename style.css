@@ -176,6 +176,17 @@ button:hover {
   text-align: justify; /* Optional: Justify text for cleaner alignment */
 }
 
+article p {
+  margin: 0; /* Remove extra margin between paragraphs */
+}
+
+.project-year {
+  display: block; /* Force it to take up its own line */
+  margin-top: 0.5em; /* Add space above the year */
+  font-style: italic; /* Optional: Make it stand out with italics */
+  color: #666; /* Optional: Add a muted text color */
+}
+
 /* General styles for all headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1; /* Tighter leading for headings */
