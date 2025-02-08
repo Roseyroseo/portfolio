@@ -291,3 +291,26 @@ h4, h5, h6 {
   border-radius: 50%; /* Make it circular */
   border: 1px solid var(--color-accent); /* Optional: Add a border */
 }
+
+/* Highlight hovered wedges */
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path {
+  transition: 300ms;
+  cursor: pointer; /* Indicate that wedges are clickable */
+}
+
+/* Highlight selected wedge */
+.selected {
+  --color: oklch(60% 45% 0) !important; /* Custom color for selected */
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+.selected:is(li) {
+  font-weight: bold;
+}
