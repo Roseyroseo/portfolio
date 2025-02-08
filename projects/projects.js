@@ -82,7 +82,7 @@ function renderPieChart(projectsToVisualize) {
     value: count,
   }));
 
-  const colors = d3.scaleOrdinal(d3.schemeTableau10);
+  const colors = d3.scaleOrdinal(d3.schemeAccent);
 
   const arcGenerator = d3
     .arc()
@@ -99,7 +99,7 @@ function renderPieChart(projectsToVisualize) {
       .attr("d", arcGenerator(d))
       .attr("fill", colors(i))
       .attr("stroke", "#fff")
-      .attr("stroke-width", 0.5);
+      .attr("stroke-width", 0.3);
   });
 
   // Draw legend
