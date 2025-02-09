@@ -4,6 +4,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 let projects = [];
 let query = "";
 let selectedIndex = -1; // -1 means no wedge is selected
+let data = []; // Store pie chart data for reference
 
 async function fetchAndDisplayProjects() {
   const projectsContainer = document.querySelector(".projects");
@@ -19,22 +20,14 @@ async function fetchAndDisplayProjects() {
     projects = await fetchJSON("../lib/projects.json");
 
     // Display all projects initially
-    renderProjects(projects);
+    applyFilters(); // Ensure filters are applied on load
 
     // Attach event listener to the search bar
     if (searchInput) {
-        searchInput.addEventListener("input", (event) => {
-            query = event.target.value; // Update the search query
-    
-            // Get the currently selected year
-            const selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
-    
-            // Apply both filters at once
-            const filteredProjects = filterProjects(query, selectedYear);
-    
-            // Render the updated projects
-            renderProjects(filteredProjects);
-        });
+      searchInput.addEventListener("input", (event) => {
+        query = event.target.value; // Update the search query
+        applyFilters(true); // ✅ Update the pie chart when searching
+      });
     }
 
     // Render the initial pie chart
@@ -45,14 +38,14 @@ async function fetchAndDisplayProjects() {
 }
 
 function filterProjects(query, selectedYear) {
-    return projects.filter((project) => {
-        const values = Object.values(project)
-            .join(" ")
-            .toLowerCase();
-        const matchesQuery = values.includes(query.toLowerCase());
-        const matchesYear = selectedYear ? project.year === selectedYear : true;
-        return matchesQuery && matchesYear;
-    });
+  return projects.filter((project) => {
+    const values = Object.values(project)
+      .join(" ")
+      .toLowerCase();
+    const matchesQuery = values.includes(query.toLowerCase());
+    const matchesYear = selectedYear ? project.year === selectedYear : true;
+    return matchesQuery && matchesYear;
+  });
 }
 
 function renderProjects(projectsToRender) {
@@ -86,7 +79,7 @@ function renderPieChart(projectsToVisualize) {
     (d) => d.year
   );
 
-  const data = rolledData.map(([year, count]) => ({
+  data = rolledData.map(([year, count]) => ({
     label: year,
     value: count,
   }));
@@ -110,24 +103,19 @@ function renderPieChart(projectsToVisualize) {
       .attr("stroke", "#fff")
       .attr("stroke-width", 0.3)
       .on("click", () => {
-        selectedIndex = selectedIndex === i ? -1 : i;
-    
-        // Update classes for visual selection
+        selectedIndex = selectedIndex === i ? -1 : i; // Toggle selection
+
+        // Update classes for selection effect
         svg
           .selectAll("path")
           .attr("class", (_, idx) => (idx === selectedIndex ? "selected" : null));
-    
+
         legend
           .selectAll("li")
           .attr("class", (_, idx) => (idx === selectedIndex ? "selected" : null));
-    
-        // Get the selected year
-        const selectedYear = selectedIndex !== -1 ? data[selectedIndex].label : null;
-    
-        // Apply both search and year filtering
-        const filteredProjects = filterProjects(query, selectedYear);
-        renderProjects(filteredProjects);
-    });
+
+        applyFilters(false); // ❌ Do NOT redraw the pie chart
+      });
   });
 
   // Draw legend with interactivity
@@ -139,8 +127,23 @@ function renderPieChart(projectsToVisualize) {
       .on("click", () => {
         // Simulate wedge click
         svg.selectAll("path").nodes()[i].dispatchEvent(new Event("click"));
+        applyFilters(); // Apply the filters dynamically
       });
   });
+}
+
+function applyFilters(updatePieChart = false) {
+  const selectedYear =
+    selectedIndex !== -1 ? data[selectedIndex]?.label : null; // Get selected year from the legend data
+  console.log("Applying Filters - Selected Year:", selectedYear, "Query:", query);
+
+  const filteredProjects = filterProjects(query, selectedYear); // Apply both filters
+  renderProjects(filteredProjects); // Render the filtered projects
+
+  // Update pie chart only when searching
+  if (updatePieChart) {
+    renderPieChart(filteredProjects); // Update the pie chart and legend dynamically
+  }
 }
 
 // Call the main function to fetch and display projects

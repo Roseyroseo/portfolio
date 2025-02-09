@@ -199,6 +199,7 @@ article p {
   display: flex;
   align-items: center; /* Center-align text and swatch */
   gap: 0.5rem; /* Space between swatch and text */
+  cursor: pointer;
 }
 
 .legend .swatch {
@@ -207,6 +208,7 @@ article p {
   aspect-ratio: 1 / 1;
   background-color: var(--color); /* Use custom property for color */
   border-radius: 0.25em; /* Slightly rounded corners */
+  cursor: pointer;
 }
 
 .container {
