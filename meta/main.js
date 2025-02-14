@@ -13,6 +13,7 @@ const usableArea = {
 
 let data = [];
 let commits = [];
+let brushSelection = null;
 
 // Create SVG for scatterplot
 const svg = d3
@@ -47,7 +48,7 @@ function processCommits() {
 
       let ret = {
         id: commit,
-        url: `https://github.com/YOUR_REPO/commit/${commit}`,
+        url: `https://github.com/Roseyroseo/portfolio/commit/${commit}`,
         author,
         date,
         time,
@@ -138,7 +139,7 @@ function updateTooltipPosition(event) {
   tooltip.style.top = `${event.clientY + 10}px`;
 }
 
-// Function to create scatterplot visualization
+// Function to create scatterplot visualization with brushing
 function createScatterplot() {
     if (!commits.length) return;
 

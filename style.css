@@ -422,4 +422,17 @@ circle:hover {
   transform: scale(1.5);
 }
 
-/* ---------------------------------------------*/
+/* Brush styles---------------------------------------------*/
+
+.selection {
+  fill-opacity: 0.1;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+circle.selected {
+  fill: #ff9cad;
+}
+
+/* --------------------------------------*/
