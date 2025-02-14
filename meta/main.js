@@ -109,70 +109,113 @@ function displayStats() {
     dl.append('dd').text(maxPeriod);
 }
 
+// Function to update tooltip visibility
+function updateTooltipContent(commit) {
+    const link = document.getElementById('commit-link');
+    const date = document.getElementById('commit-date');
+    const author = document.getElementById('commit-author');
+    const lines = document.getElementById('commit-lines');
+  
+    if (Object.keys(commit).length === 0) return;
+  
+    link.href = commit.url;
+    link.textContent = commit.id;
+    date.textContent = commit.datetime?.toLocaleString('en', { dateStyle: 'full' });
+    author.textContent = commit.author;
+    lines.textContent = commit.totalLines;
+  }
+
+// function to control tooltip visibility
+function updateTooltipVisibility(isVisible) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.hidden = !isVisible;
+  }
+
+// Function to update tooltip position
+function updateTooltipPosition(event) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.style.left = `${event.clientX + 10}px`;
+  tooltip.style.top = `${event.clientY + 10}px`;
+}
+
 // Function to create scatterplot visualization
 function createScatterplot() {
     if (!commits.length) return;
-  
+
     // Define scales
     const xScale = d3
-      .scaleTime()
-      .domain(d3.extent(commits, (d) => d.datetime))
-      .range([usableArea.left, usableArea.right])
-      .nice();
-  
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, 24]) // Represents hours in a day
-      .range([usableArea.bottom, usableArea.top]);
-  
-    // Add gridlines before axes
-    const gridlines = svg
-      .append("g")
-      .attr("class", "gridlines")
-      .attr("transform", `translate(${usableArea.left}, 0)`);
-  
-    gridlines.call(
-      d3.axisLeft(yScale).tickFormat("").tickSize(-usableArea.width)
-    );
-  
-    // Create the axes
-    const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3
-      .axisLeft(yScale)
-      .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
-  
-    // Add X axis
-    svg
-      .append("g")
-      .attr("transform", `translate(0, ${usableArea.bottom })`)
-      .call(xAxis)
-      .selectAll("text")  // Rotate X-axis labels
-      .style("text-anchor", "end")
-      .attr("transform", "rotate(-35)");  // Rotates labels for better readability;
-  
-    // Add Y axis
-    svg
-      .append("g")
-      .attr("transform", `translate(${usableArea.left}, 0)`)
-      .call(yAxis);
+        .scaleTime()
+        .domain(d3.extent(commits, (d) => d.datetime))
+        .range([usableArea.left, usableArea.right])
+        .nice();
 
-    // Define a color scale for time of day (0 = midnight, 24 = end of day)
-    const colorScale = d3.scaleSequential(d3.interpolateRdYlBu)  // Blue for night, lighter for day
-      .domain([0, 24]);  // Input range (midnight to midnight)
-  
+    const yScale = d3
+        .scaleLinear()
+        .domain([0, 24]) // Represents hours in a day
+        .range([usableArea.bottom, usableArea.top]);
+
+    // Create a **square root** scale for the dot size
+    const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+    const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);  // Adjust size as needed
+
+    // Sort commits by total lines so **smaller dots are on top**
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
+    // Add gridlines before axes
+    const gridlines = svg.append("g")
+        .attr("class", "gridlines")
+        .attr("transform", `translate(${usableArea.left}, 0)`);
+    gridlines.call(d3.axisLeft(yScale).tickFormat("").tickSize(-usableArea.width));
+
+    // Create axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale)
+        .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
+
+    // Add X axis
+    svg.append("g")
+        .attr("transform", `translate(0, ${usableArea.bottom})`)
+        .call(xAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("transform", "rotate(-35)");
+
+    // Add Y axis
+    svg.append("g")
+        .attr("transform", `translate(${usableArea.left}, 0)`)
+        .call(yAxis);
+
+    // Define a color scale for time of day (bluer for night, orangish for day)
+    const colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
+        .domain([0, 24]);
+
     // Draw scatter plot (dots)
     const dots = svg.append("g").attr("class", "dots");
-  
-    dots
-      .selectAll("circle")
-      .data(commits)
-      .join("circle")
-      .attr("cx", (d) => xScale(d.datetime))
-      .attr("cy", (d) => yScale(d.hourFrac))
-      .attr("r", 5)
-      .attr("fill", d => colorScale(d.hourFrac));  // Assign colors based on time of day;
-  }
-  
+
+    dots.selectAll("circle")
+        .data(sortedCommits) // Use sorted commits to draw larger dots first
+        .join("circle")
+        .attr("cx", (d) => xScale(d.datetime))
+        .attr("cy", (d) => yScale(d.hourFrac))
+        .attr("r", (d) => rScale(d.totalLines))  // **Set radius based on lines edited**
+        .attr("fill", (d) => colorScale(d.hourFrac))
+        .style("fill-opacity", 0.7) // Add transparency for overlapping dots
+        .on("mouseenter", function (event, d) {
+            d3.select(event.currentTarget).style("fill-opacity", 1); // Full opacity on hover
+            updateTooltipContent(d);
+            updateTooltipVisibility(true);
+            updateTooltipPosition(event);
+        })
+        .on("mouseleave", function () {
+            d3.select(event.currentTarget).style("fill-opacity", 0.7); // Restore transparency
+            updateTooltipContent({});
+            updateTooltipVisibility(false);
+        })
+        .on("mousemove", (event) => {
+            updateTooltipPosition(event);
+        });
+}
+
   // Load data when DOM is ready
   document.addEventListener("DOMContentLoaded", async () => {
     await loadData();
