@@ -60,6 +60,8 @@ body {
     padding: 2em;
   }
 
+/* Navigation bar styling ----------------------------------------*/
+
   nav {
     position: relative;
     display: flex; /* Make the parent a flex container */
@@ -92,6 +94,8 @@ nav a:hover {
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%); /* Light background with the same hue */
   padding-bottom: 0.1em; /* Reduce padding to counter border height */
 }
+
+/* Form styling --------------------------------------------------*/
 
 form {
   display: grid; /* Enable grid layout for the form */
@@ -136,6 +140,8 @@ button {
 button:hover {
   background-color: oklch(60% 45% 0); /* Slightly darker hover background */
 }
+
+/* Article and project styling -----------------------------------*/
 
 .projects {
   display: grid; /* Make .projects a grid container */
@@ -194,7 +200,7 @@ article p {
   overflow: visible;
 }
 
-/* Legend styling */
+/* Projects Legend styling ------------------------------------------*/
 .legend li {
   display: flex;
   align-items: center; /* Center-align text and swatch */
@@ -242,7 +248,7 @@ svg {
   border-radius: 0.5rem;
 }
 
-/* General styles for all headings */
+/* General styles for all headings ----------------------------*/
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1; /* Tighter leading for headings */
   text-wrap: balance; /* Prevent uneven line breaks */
@@ -251,11 +257,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Specific styles for individual heading levels */
 h1 {
-  font-size: 300%; /* Make <h1> significantly larger for contrast */
+  font-size: 200%; /* Make <h1> significantly larger for contrast */
 }
 
 h2 {
-  font-size: 200%; /* Distinguish <h2> from <h1> and body text */
+  font-size: 170%; /* Distinguish <h2> from <h1> and body text */
 }
 
 h3 {
@@ -265,6 +271,8 @@ h3 {
 h4, h5, h6 {
   font-size: 125%; /* Use progressively smaller sizes for lower headings */
 }
+
+/* Github Widget Styles ----------------------- */
 
 #profile-stats dl {
   display: grid;
@@ -294,6 +302,8 @@ h4, h5, h6 {
   border: 1px solid var(--color-accent); /* Optional: Add a border */
 }
 
+/* Projects Pie Chart Styles ---------------------------------------*/
+
 /* Highlight hovered wedges */
 #projects-pie-plot:has(path:hover) path:not(:hover) {
   opacity: 0.5;
@@ -315,4 +325,40 @@ h4, h5, h6 {
 
 .selected:is(li) {
   font-weight: bold;
+}
+
+/* Summary Statistics  in META section ------------------------------*/
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal-sized columns */
+  gap: 1rem; /* Spacing between grid items */
+}
+
+.stats dt {
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Prevent text from breaking into new lines */
+  grid-row: 1; /* Place all <dt> elements in the first row */
+  font-size: 10px;
+  color: gray;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats dd {
+  text-align: center;
+  grid-row: 2; /* Place all <dd> elements in the second row */
+  margin: 0; /* Remove default margins */
+  font-weight: bold;
+  margin: 0;
+}
+
+/*Meta scatter plot chart---------------------------------------*/
+
+#chart svg {
+  width: 100%;
+  height: 600px;  /* Ensure sufficient height */
+  max-width: 1000px;
 }
