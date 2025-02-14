@@ -22,6 +22,9 @@ const svg = d3
   .attr("viewBox", `0 0 ${width} ${height}`)
   .style("overflow", "visible");
 
+// Declare scales globally so they can be accessed in all functions
+let xScale, yScale;
+
 // Function to load and process data
 async function loadData() {
   data = await d3.csv("loc.csv", (row) => ({
@@ -142,81 +145,148 @@ function updateTooltipPosition(event) {
 // Function to create scatterplot visualization with brushing
 function createScatterplot() {
     if (!commits.length) return;
-
-    // Define scales
-    const xScale = d3
-        .scaleTime()
-        .domain(d3.extent(commits, (d) => d.datetime))
-        .range([usableArea.left, usableArea.right])
-        .nice();
-
-    const yScale = d3
-        .scaleLinear()
-        .domain([0, 24]) // Represents hours in a day
-        .range([usableArea.bottom, usableArea.top]);
-
-    // Create a **square root** scale for the dot size
+  
+    // Define scales globally
+    xScale = d3
+      .scaleTime()
+      .domain(d3.extent(commits, (d) => d.datetime))
+      .range([usableArea.left, usableArea.right])
+      .nice();
+  
+    yScale = d3
+      .scaleLinear()
+      .domain([0, 24]) // Represents hours in a day
+      .range([usableArea.bottom, usableArea.top]);
+  
+    // Create a square root scale for dot size
     const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-    const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);  // Adjust size as needed
-
-    // Sort commits by total lines so **smaller dots are on top**
+    const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+  
+    // Sort commits by total lines so smaller dots are on top
     const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
-
+  
     // Add gridlines before axes
     const gridlines = svg.append("g")
-        .attr("class", "gridlines")
-        .attr("transform", `translate(${usableArea.left}, 0)`);
+      .attr("class", "gridlines")
+      .attr("transform", `translate(${usableArea.left}, 0)`);
     gridlines.call(d3.axisLeft(yScale).tickFormat("").tickSize(-usableArea.width));
-
+  
     // Create axes
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale)
-        .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
-
-    // Add X axis
+      .tickFormat((d) => String(d % 24).padStart(2, "0") + ":00");
+  
     svg.append("g")
-        .attr("transform", `translate(0, ${usableArea.bottom})`)
-        .call(xAxis)
-        .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("transform", "rotate(-35)");
-
-    // Add Y axis
+      .attr("transform", `translate(0, ${usableArea.bottom})`)
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("transform", "rotate(-35)");
+  
     svg.append("g")
-        .attr("transform", `translate(${usableArea.left}, 0)`)
-        .call(yAxis);
-
-    // Define a color scale for time of day (bluer for night, orangish for day)
-    const colorScale = d3.scaleSequential(d3.interpolateRdYlBu)
-        .domain([0, 24]);
-
-    // Draw scatter plot (dots)
+      .attr("transform", `translate(${usableArea.left}, 0)`)
+      .call(yAxis);
+  
+    // Define color scale for time of day
+    const colorScale = d3.scaleSequential(d3.interpolateRdYlBu).domain([0, 24]);
+  
+    // Draw scatter plot
     const dots = svg.append("g").attr("class", "dots");
-
+  
     dots.selectAll("circle")
-        .data(sortedCommits) // Use sorted commits to draw larger dots first
-        .join("circle")
-        .attr("cx", (d) => xScale(d.datetime))
-        .attr("cy", (d) => yScale(d.hourFrac))
-        .attr("r", (d) => rScale(d.totalLines))  // **Set radius based on lines edited**
-        .attr("fill", (d) => colorScale(d.hourFrac))
-        .style("fill-opacity", 0.7) // Add transparency for overlapping dots
-        .on("mouseenter", function (event, d) {
-            d3.select(event.currentTarget).style("fill-opacity", 1); // Full opacity on hover
-            updateTooltipContent(d);
-            updateTooltipVisibility(true);
-            updateTooltipPosition(event);
-        })
-        .on("mouseleave", function () {
-            d3.select(event.currentTarget).style("fill-opacity", 0.7); // Restore transparency
-            updateTooltipContent({});
-            updateTooltipVisibility(false);
-        })
-        .on("mousemove", (event) => {
-            updateTooltipPosition(event);
-        });
-}
-
+      .data(sortedCommits)
+      .join("circle")
+      .attr("cx", (d) => xScale(d.datetime))
+      .attr("cy", (d) => yScale(d.hourFrac))
+      .attr("r", (d) => rScale(d.totalLines))
+      .attr("fill", (d) => colorScale(d.hourFrac))
+      .style("fill-opacity", 0.7)
+      .on("mouseenter", function (event, d) {
+        d3.select(event.currentTarget).style("fill-opacity", 1);
+        updateTooltipContent(d);
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+      })
+      .on("mouseleave", function () {
+        d3.select(event.currentTarget).style("fill-opacity", 0.7);
+        updateTooltipContent({});
+        updateTooltipVisibility(false);
+      });
+  
+    // Implement brushing
+    const brush = d3.brush()
+      .on("start brush end", brushed);
+  
+    svg.append("g")
+      .attr("class", "brush")
+      .call(brush);
+  
+    // Raise dots to prevent overlay from blocking tooltips
+    svg.selectAll(".dots, .overlay ~ *").raise();
+  }
+  
+  // Function to handle brush selection
+  function brushed(event) {
+    brushSelection = event.selection;
+    updateSelection();
+    updateSelectionCount();
+    updateLanguageBreakdown();
+  }
+  
+  // Function to check if commit is selected
+  function isCommitSelected(commit) {
+    if (!brushSelection) return false;
+    const [[x0, y0], [x1, y1]] = brushSelection;
+    return (
+      xScale(commit.datetime) >= x0 &&
+      xScale(commit.datetime) <= x1 &&
+      yScale(commit.hourFrac) >= y0 &&
+      yScale(commit.hourFrac) <= y1
+    );
+  }
+  
+  // Function to update selection visuals
+  function updateSelection() {
+    d3.selectAll("circle").classed("selected", (d) => isCommitSelected(d));
+  }
+  
+  // Function to update selection count
+  function updateSelectionCount() {
+    const selectedCommits = brushSelection
+      ? commits.filter(isCommitSelected)
+      : [];
+  
+    const countElement = document.getElementById("selection-count");
+    countElement.textContent = `${selectedCommits.length || "No"} commits selected`;
+  }
+  
+  // Function to update language breakdown
+  function updateLanguageBreakdown() {
+    const selectedCommits = brushSelection
+      ? commits.filter(isCommitSelected)
+      : [];
+    const container = document.getElementById("language-breakdown");
+  
+    if (selectedCommits.length === 0) {
+      container.innerHTML = "";
+      return;
+    }
+  
+    const lines = selectedCommits.flatMap((d) => d.lines);
+    const breakdown = d3.rollup(
+      lines,
+      (v) => v.length,
+      (d) => d.type
+    );
+  
+    container.innerHTML = "";
+    for (const [language, count] of breakdown) {
+      const proportion = count / lines.length;
+      const formatted = d3.format(".1~%")(proportion);
+      container.innerHTML += `<dt>${language}</dt><dd>${count} lines (${formatted})</dd>`;
+    }
+  }
+  
   // Load data when DOM is ready
   document.addEventListener("DOMContentLoaded", async () => {
     await loadData();
