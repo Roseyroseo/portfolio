@@ -52,6 +52,7 @@ select.addEventListener("input", (event) => {
 const pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
+    { url: 'meta/', title: 'Meta' },
     { url: 'contact/', title: 'Contact' },
     { url: 'resume/', title: 'Resume' },
     { url: 'https://github.com/Roseyroseo', title: 'GitHub' },

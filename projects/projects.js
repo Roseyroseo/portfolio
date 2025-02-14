@@ -26,7 +26,7 @@ async function fetchAndDisplayProjects() {
     if (searchInput) {
       searchInput.addEventListener("input", (event) => {
         query = event.target.value; // Update the search query
-        applyFilters(true); // ✅ Update the pie chart when searching
+        applyFilters(true); // Update the pie chart when searching
       });
     }
 
@@ -114,7 +114,7 @@ function renderPieChart(projectsToVisualize) {
           .selectAll("li")
           .attr("class", (_, idx) => (idx === selectedIndex ? "selected" : null));
 
-        applyFilters(false); // ❌ Do NOT redraw the pie chart
+        applyFilters(false); // Do NOT redraw the pie chart
       });
   });
 
