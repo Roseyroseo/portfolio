@@ -1,6 +1,6 @@
 const width = 1000;
 const height = 600;
-const margin = { top: 10, right: 10, bottom: 30, left: 50 };
+const margin = { top: 10, right: 10, bottom: 50, left: 50 }; 
 
 const usableArea = {
   top: margin.top,
@@ -144,14 +144,21 @@ function createScatterplot() {
     // Add X axis
     svg
       .append("g")
-      .attr("transform", `translate(0, ${usableArea.bottom})`)
-      .call(xAxis);
+      .attr("transform", `translate(0, ${usableArea.bottom })`)
+      .call(xAxis)
+      .selectAll("text")  // Rotate X-axis labels
+      .style("text-anchor", "end")
+      .attr("transform", "rotate(-35)");  // Rotates labels for better readability;
   
     // Add Y axis
     svg
       .append("g")
       .attr("transform", `translate(${usableArea.left}, 0)`)
       .call(yAxis);
+
+    // Define a color scale for time of day (0 = midnight, 24 = end of day)
+    const colorScale = d3.scaleSequential(d3.interpolateRdYlBu)  // Blue for night, lighter for day
+      .domain([0, 24]);  // Input range (midnight to midnight)
   
     // Draw scatter plot (dots)
     const dots = svg.append("g").attr("class", "dots");
@@ -163,7 +170,7 @@ function createScatterplot() {
       .attr("cx", (d) => xScale(d.datetime))
       .attr("cy", (d) => yScale(d.hourFrac))
       .attr("r", 5)
-      .attr("fill", "steelblue");
+      .attr("fill", d => colorScale(d.hourFrac));  // Assign colors based on time of day;
   }
   
   // Load data when DOM is ready
