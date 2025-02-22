@@ -1,9 +1,10 @@
 [
     {
-        "title": "Misleading Visualizations",
+        "title": "Cyclical Observations",
         "year":"2025",
-        "image": "/portfolio/images/pimg/mislead.png",
-        "description": "Trying to create a misleading visualization on purpose in order to make better honest visualizations."
+        "image": "/portfolio/images/pimg/bikewatch.png",
+        "description": "Interactive map of bike traffic in the Boston area during different times of the day.",
+        "url": "https://roseyroseo.github.io/CyclicalObservations/"
     },
     {
         "title": "Weather Patterns in US Cities",
@@ -15,7 +16,8 @@
         "title": "Is Less More? Analyzing Ratings by Recipe Complexity",
         "year": "2024",
         "image": "/portfolio/images/pimg/recipes.png",
-        "description": "In our fast-paced world people have come to appreciate convenience and appreciate time savings anywhere possible, so are recipe ratings perhaps biased towards quick-and-easy solutions to feeding ourselves and our families? We analyze a dataset of over 400,000 recipes to find out."
+        "description": "In our fast-paced world people have come to appreciate convenience and appreciate time savings anywhere possible, so are recipe ratings perhaps biased towards quick-and-easy solutions to feeding ourselves and our families? We analyze a dataset of over 400,000 recipes to find out.",
+        "url": "https://roseyroseo.github.io/Is_Less_More-Analyzing_Ratings_by_Recipe_Complexity/"
     },
     {
         "title": "The Current State of Data Science: Compensation and Representation",
